@@ -6,33 +6,61 @@ EcommerceApp is a comprehensive e-commerce solution designed to manage products,
 
 ## Project Structure
 
-- **EcommerceApp**: Main application code.
-- **Ecommerce.DB**: Database configuration and models.
-- **Ecommerce.Domain**: Business logic and domain models.
-- **Ecommerce.Domain.Shared**: Shared domain models and interfaces.
+- **EcommerceApp**: Contains the main application code including controllers.
+- **Ecommerce.DB**: Contains database configuration and models, including the `Data` folder.
+- **Ecommerce.Domain**: Contains business logic, domain models, and services, including the `Services` folder.
+- **Ecommerce.Domain.Shared**: Contains shared domain models, interfaces, and DTOs, organized into `Interfaces`, `Entities`, and `DTO` folders.
 
 ## Prerequisites
 
 - [Docker](https://www.docker.com/get-started)
-- [Docker Compose](https://docs.docker.com/compose/install/)
-- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) (for version control and repository management, optional but recommended)
+- [Git](https://git-scm.com/download/win) (for windows users)
 - [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) (a recommended IDE to navigate through the code)  
 
 
-## Docker Setup Instructions
+## Setup Instructions
 
-1. Clone the repository:
+
+1. **Open Git Bash**: Launch Git Bash on your computer.
+
+2. **Clone the Repository**: Run the following command to clone the repository:
     ```bash
     git clone https://github.com/Mohammed506/EcommerceApp.git
+    ```
+
+3. **Navigate to the Project Directory**:
+    ```bash
     cd EcommerceApp
     ```
 
-2. Build the Docker images and start the containers using Docker Compose:
+4. **Start Docker Engine**: Ensure that Docker Engine is running on your machine(click on docker icon and wait for the docker engine to start it might take few minutes).
+
+5. **Build and Start the Docker Containers**:
     ```bash
     docker-compose up --build
     ```
 
-   The application should now be running on [http://localhost:8080/swagger](http://localhost:8080/swagger).
+   after the build is finished(it might take few minutes) ,
+   The application should now be running on [http://localhost:8080](http://localhost:8080).
+   
+   note: if you open this url you will find nothing since i put no end point for this , please go to swagger end point to find all the end points for the application
+
+### Access Swagger UI
+
+1. Open your web browser and navigate to [http://localhost:8080/swagger](http://localhost:8080/swagger).
+2. You will see the Swagger UI, where you can explore and test the available API endpoints.
+
+
+## Opening the Project in Visual Studio 2022
+
+1. **Open Visual Studio 2022**.
+
+2. **Open the Solution**:
+   - Click on **File** in the top menu.
+   - Select **Open** and then **Project/Solution...**.
+   - Navigate to the cloned project folder `EcommerceApp`.
+   - Select the `.sln` file located in the project folder and click **Open**.
+   - Visual Studio 2022 will load the solution and all related projects.
 
 
 
@@ -47,11 +75,17 @@ EcommerceApp is a comprehensive e-commerce solution designed to manage products,
 
 Purchase end point require authentication. You need to provide a JWT token to access these endpoints. In the Swagger UI, you can enter your JWT token by following these steps:
 
-1. Click on the "Authorize" button in the Swagger UI.
-2. Enter the token in the format `Bearer {your_token}`.
-3. Click "Authorize" to apply the token to your requests.
+1. **Obtain the Token**:
+   - Use the **Login** endpoint to generate a JWT token.
+   - **POST** `/Users/login`
+   - **Request Body**: Provide your username and password.
+   - **Response**: If successful, you will receive a JWT token in the response.
 
-
+2. **Use the Token in Swagger**:
+   - Open Swagger UI at [http://localhost:8080/swagger](http://localhost:8080/swagger).
+   - Click on the **Authorize** button located at the top right of the Swagger UI.
+   - Enter the JWT token in the format `Bearer {your_token}` . Make sure to copy the token **without quotation marks**.
+   - Click **Authorize** to apply the token to your requests.
 ## API Endpoints
 
 ### User Endpoints
